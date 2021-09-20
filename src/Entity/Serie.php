@@ -12,20 +12,20 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=SerieRepository::class)
  */
-#[ApiResource(normalizationContext: ['groups' => ['serie']])]
+#[ApiResource]
 class Serie
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"serie"})
+     * @Groups("cd")
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
-     *  @Groups({"serie"})
+     * @Groups("cd")
      * 
      */
     private $numero;
@@ -33,21 +33,21 @@ class Serie
 
     /**
      * @ORM\OneToMany(targetEntity=Seance::class, mappedBy="serie")
-     * 
+     * @Groups("cd")
      * 
      */
     private $seances;
 
     /**
      * @ORM\ManyToOne(targetEntity=Cd::class, inversedBy="series")
-     * @Groups("cd")
+     * 
      * 
      */
     private $cd;
 
     /**
      * @ORM\OneToMany(targetEntity=Ordre::class, mappedBy="serie")
-     * 
+     * @Groups("cd")
      * 
      */
     private $ordres;

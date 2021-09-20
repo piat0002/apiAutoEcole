@@ -21,26 +21,26 @@ class Cd
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @groups({"cd"})
+     * @Groups({"cd"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
-     * @groups({"cd"})
+     * @Groups({"cd"})
      */
     private $numero;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @groups({"cd"})
+     * @Groups({"cd"})
      */
     private $editeur;
 
     /**
      * 
      * @ORM\OneToMany(targetEntity=Serie::class, mappedBy="cd")
-     * @groups("serie")
+     * @Groups({"cd"})
      */
     private $series;
 

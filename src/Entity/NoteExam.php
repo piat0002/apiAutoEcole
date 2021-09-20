@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NoteExamRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=NoteExamRepository::class)
@@ -16,16 +17,19 @@ class NoteExam
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("eleve")
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("eleve")
      */
     private $note;
 
     /**
-     * @ORM\ManyToOne(targetEntity=DateExam::class, inversedBy="notesexam")
+     * @ORM\ManyToOne(targetEntity=DateExam::class, inversedBy="noteExams")
+     * @Groups("eleve")
      */
     private $dateExam;
 

@@ -27,7 +27,7 @@ class Seance
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity=note::class, mappedBy="seance")
+     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="seance")
      */
     private $notes;
 

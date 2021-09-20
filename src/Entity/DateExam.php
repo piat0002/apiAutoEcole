@@ -7,7 +7,7 @@ use App\Repository\DateExamRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=DateExamRepository::class)
  */
@@ -18,16 +18,20 @@ class DateExam
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * 
+     * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * 
+     * 
      */
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity=noteExam::class, mappedBy="dateExam")
+     * @ORM\OneToMany(targetEntity=NoteExam::class, mappedBy="dateExam")
      */
     private $notesexams;
 
@@ -56,7 +60,7 @@ class DateExam
     /**
      * @return Collection|noteExam[]
      */
-    public function getNotesexam(): Collection
+    public function getNotesexams(): Collection
     {
         return $this->notesexams;
     }
