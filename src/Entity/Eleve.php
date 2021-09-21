@@ -7,61 +7,52 @@ use App\Repository\EleveRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EleveRepository::class)
  */
-#[ApiResource(normalizationContext: ['groups' => ['eleve']])]
+#[ApiResource]
 class Eleve
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"eleve"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eleve"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eleve"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eleve"})
      */
     private $rue;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eleve"})
      */
     private $ville;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"eleve"})
      */
     private $cp;
 
     /**
      * @ORM\Column(type="time")
-     * @Groups({"eleve"})
      */
     private $birthdate;
 
     /**
      * @ORM\OneToMany(targetEntity=NoteExam::class, mappedBy="eleve")
-     * @Groups({"eleve"})
      */
     private $noteExams;
 

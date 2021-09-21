@@ -7,7 +7,6 @@ use App\Repository\SerieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SerieRepository::class)
@@ -19,13 +18,11 @@ class Serie
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("cd")
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups("cd")
      * 
      */
     private $numero;
@@ -33,7 +30,6 @@ class Serie
 
     /**
      * @ORM\OneToMany(targetEntity=Seance::class, mappedBy="serie")
-     * @Groups("cd")
      * 
      */
     private $seances;
@@ -47,7 +43,6 @@ class Serie
 
     /**
      * @ORM\OneToMany(targetEntity=Ordre::class, mappedBy="serie")
-     * @Groups("cd")
      * 
      */
     private $ordres;

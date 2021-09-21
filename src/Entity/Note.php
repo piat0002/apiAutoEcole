@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=NoteRepository::class)
@@ -21,16 +22,18 @@ class Note
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("eleve")
      */
     private $note;
 
     /**
-     * @ORM\ManyToOne(targetEntity=eleve::class, inversedBy="notes")
+     * @ORM\ManyToOne(targetEntity=Eleve::class, inversedBy="notes")
      */
     private $eleve;
 
     /**
      * @ORM\ManyToOne(targetEntity=Seance::class, inversedBy="notes")
+     * @Groups("eleve")
      */
     private $seance;
 
