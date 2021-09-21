@@ -13,7 +13,7 @@ class EleveFixtures extends Fixture
         
         $eleves = [];
         
-        for ($i=0; $i < 30; $i++) { 
+        for ($i=0; $i < 50; $i++) { 
             //Generate a timestamp using mt_rand before 1 janvier 2003
             $timestamp = mt_rand(1, 946684800);
             //Format that timestamp into a readable date string.
