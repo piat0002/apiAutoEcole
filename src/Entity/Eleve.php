@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=EleveRepository::class)
  */
@@ -53,10 +54,10 @@ class Eleve
     private $cp;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="time")
      * @Groups({"eleve"})
      */
-    private $date;
+    private $birthdate;
 
     /**
      * @ORM\OneToMany(targetEntity=NoteExam::class, mappedBy="eleve")
@@ -140,14 +141,14 @@ class Eleve
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getBirthdate(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->birthdate;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setBirthdate(\DateTimeInterface $birthdate): self
     {
-        $this->date = $date;
+        $this->birthdate = $birthdate;
 
         return $this;
     }
