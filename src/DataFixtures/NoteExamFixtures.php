@@ -28,7 +28,7 @@ class NoteExamFixtures extends Fixture
         $dateExams = $this->dateExamRepository->findAll();
 
         for ($i=0; $i < 40; $i++) { 
-            $eleveid = ($i % 15) + 1;
+            $eleveid = ($i % 28) + 1;
             $dateid = ($i % 5 ) + 1;
             $note = ($i * 13) % 40;
 
@@ -39,17 +39,7 @@ class NoteExamFixtures extends Fixture
             $manager->persist($NoteExam);
         }
 
-        for ($i=0; $i <32 ; $i++) { 
-            $eleveid = ($i%4) + 20;
-            $dateid = ($i % 5 ) + 1;
-            $note = 36;
 
-            $NoteExam = new NoteExam();
-            $NoteExam->setNote($note);
-            $NoteExam->setDateExam($dateExams[$dateid]);
-            $NoteExam->setEleve($eleves[$eleveid]);
-            $manager->persist($NoteExam);
-        }
 
         $manager->flush();
        

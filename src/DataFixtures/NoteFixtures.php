@@ -27,7 +27,7 @@ class NoteFixtures extends Fixture implements DependentFixtureInterface
         $eleves = $this->eleveRepository->findAll();
         $seances = $this->seanceRepository->findAll();
         for ($i=0; $i < 80; $i++) { 
-            $eleveid = ($i % 28) + 1;
+            $eleveid = ($i % 16) + 1;
             $seanceid = ($i % 9) + 1;
             $note = ($i * 13) % 40;
 
@@ -36,6 +36,23 @@ class NoteFixtures extends Fixture implements DependentFixtureInterface
             $Note->setSeance($seances[$seanceid]);
             $Note->setEleve($eleves[$eleveid]);
             $manager->persist($Note);
+        }
+
+        for ($i=0; $i < 5 ; $i++) { 
+            $eleveid = ($i%5) + 20;
+            $note = 36;
+
+
+            //pour les sceance
+            for ($j=0; $j < 5; $j++) { 
+                $seanceid = $j;
+                $Note = new Note();
+                $Note->setNote($note);
+                $Note->setSeance($seances[$seanceid]);
+                $Note->setEleve($eleves[$eleveid]);
+                $manager->persist($Note);
+            }
+            
         }
         $manager->flush();
        
