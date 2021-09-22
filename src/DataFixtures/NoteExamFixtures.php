@@ -28,14 +28,27 @@ class NoteExamFixtures extends Fixture
         $dateExams = $this->dateExamRepository->findAll();
 
         for ($i=0; $i < 40; $i++) { 
+            //insertion de note dans les date ancien
             $eleveid = ($i % 28) + 1;
-            $dateid = ($i % 5 ) + 1;
+            $dateid = ($i % 5);
             $note = ($i * 13) % 40;
 
             $NoteExam = new NoteExam();
             $NoteExam->setNote($note);
             $NoteExam->setDateExam($dateExams[$dateid]);
             $NoteExam->setEleve($eleves[$eleveid]);
+            $manager->persist($NoteExam);
+        }
+        for ($i=0; $i < 40; $i++) { 
+            //insertion de note dans les dates nouvelles
+            $eleveid = ($i % 20)+20;
+            $dateid = ($i % 5)+5;
+            //$note = ($i * 13) % 40;
+
+            $NoteExam = new NoteExam();
+            $NoteExam->setNote($note);
+            $NoteExam->setDateExam($dateExams[$dateid]);
+            //$NoteExam->setEleve($eleves[$eleveid]);
             $manager->persist($NoteExam);
         }
 

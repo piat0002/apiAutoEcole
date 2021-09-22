@@ -24,22 +24,44 @@ class NoteFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
+
         $eleves = $this->eleveRepository->findAll();
         $seances = $this->seanceRepository->findAll();
-        for ($i=0; $i < 80; $i++) { 
-            $eleveid = ($i % 16) + 1;
-            $seanceid = ($i % 9) + 1;
-            $note = ($i * 13) % 40;
 
-            $Note = new Note();
-            $Note->setNote($note);
-            $Note->setSeance($seances[$seanceid]);
-            $Note->setEleve($eleves[$eleveid]);
+        //generation de note dans ancien seance
+        for ($i=0; $i < 20; $i++) { 
+            $eleveid = $i;
+             //pour les sceance
+             for ($j=0; $j < 10; $j++) { 
+                $note = ($i * $j + 1) % 40;
+                $seanceid = $j;
+                $Note = new Note();
+                $Note->setNote($note);
+                $Note->setSeance($seances[$seanceid]);
+                $Note->setEleve($eleves[$eleveid]);
+                $manager->persist($Note);
+            }
             $manager->persist($Note);
         }
 
+        //generation de note de nouvelle seance
+        for ($i=0; $i < 80; $i++) { 
+            $eleveid = ($i * 3  % 17);
+            $seanceid = ($i % 10)+10;
+
+            $Note = new Note();
+            //$Note->setNote($note);
+            $Note->setSeance($seances[$seanceid]);
+            $Note->setEleve($eleves[$eleveid]);
+            $manager->persist($Note);
+
+           
+            $manager->persist($Note);
+        }
+
+        //generation d'evele qui on reusssi
         for ($i=0; $i < 5 ; $i++) { 
-            $eleveid = ($i%5) + 20;
+            $eleveid = ($i%5) + 22;
             $note = 36;
 
 
