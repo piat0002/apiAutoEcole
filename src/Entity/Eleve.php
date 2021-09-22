@@ -47,7 +47,7 @@ class Eleve
     private $cp;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="datetime")
      */
     private $birthdate;
 
