@@ -67,6 +67,7 @@ class Eleve
 
     /**
      * @ORM\OneToMany(targetEntity=Note::class, mappedBy="eleve")
+     * @Groups({"eleve"})
      */
     private $notes;
 
