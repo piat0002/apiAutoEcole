@@ -10,11 +10,11 @@ class CdFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        
+        $nom = ['Tuture La Voiture', 'Rudy', 'Juste In', 'Sam Truc', 'Jean Tortue'];
         for ($i=0; $i < 5; $i++) { 
             
             $cd = new Cd();
-            $cd->setEditeur('editeur '.$i);
+            $cd->setEditeur($nom[$i]);
             $cd->setNumero($i);
             $manager->persist($cd);
         };

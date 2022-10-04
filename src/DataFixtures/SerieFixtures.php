@@ -26,13 +26,16 @@ class SerieFixtures extends Fixture
         $cds = $this->cd->findAll();
 
 
-        for ($i=0; $i <=39 ; $i++) {
-            $numero = ($i % 8) + 1;
-            $idcd = ($i % 4) + 1;
-            $serie = new Serie();
-            $serie->setNumero($numero);
-            $serie->setCd($cds[$idcd]);
-            $manager->persist($serie);
+
+        for ($i=0; $i <=6 ; $i++) {
+            $numero = ($i % 6) + 1;
+            for ($j=0; $j < 5; $j++) { 
+                $idcd = $j;
+                $serie = new Serie();
+                $serie->setNumero($numero);
+                $serie->setCd($cds[$idcd]);
+                $manager->persist($serie);
+            }
         }
         $manager->flush();
     }

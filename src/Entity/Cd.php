@@ -9,38 +9,33 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CdRepository::class)
  */
-#[ApiResource(normalizationContext: ['groups' => ['cd']])]
+#[ApiResource]
 class Cd
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"cd"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cd"})
      */
     private $numero;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cd"})
      */
     private $editeur;
 
     /**
      * 
      * @ORM\OneToMany(targetEntity=Serie::class, mappedBy="cd")
-     * @Groups({"cd"})
      */
     private $series;
 
