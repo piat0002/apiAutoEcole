@@ -24,6 +24,7 @@ class SeanceFixtures extends Fixture implements DependentFixtureInterface
     {
 
         $series = $this->serie->findAll();
+
         //ancien date
         for ($i=0; $i < 10; $i++) { 
             $dateactuel = new \DateTime(); 
@@ -39,6 +40,7 @@ class SeanceFixtures extends Fixture implements DependentFixtureInterface
             $seance->setSerie($series[$serieId]);
             $manager->persist($seance);
         }
+
         //nouvelle date
         for ($i=0; $i < 10; $i++) { 
             $dateactuel = new \DateTime();

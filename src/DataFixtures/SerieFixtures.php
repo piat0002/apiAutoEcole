@@ -26,6 +26,7 @@ class SerieFixtures extends Fixture
         $cds = $this->cd->findAll();
 
 
+
         for ($i=0; $i <=6 ; $i++) {
             $numero = ($i % 6) + 1;
             for ($j=0; $j < 5; $j++) { 

@@ -25,6 +25,7 @@ class NoteFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
 
+
         $eleves = $this->eleveRepository->findAll();
         $seances = $this->seanceRepository->findAll();
 
